@@ -1,38 +1,57 @@
 <script>
-	import { Styles, Button, Container} from 'sveltestrap';
-	export let name;
-</script>
+	import {
+	  Collapse,
+	  Container,
+	  Navbar,
+	  NavbarToggler,
+	  NavbarBrand,
+	  Nav,
+	  NavItem,
+	  NavLink,
+	  Dropdown,
+	  DropdownToggle,
+	  DropdownMenu,
+	  DropdownItem,
+	  Styles,
+	  Row,
+	  Col,
+	  Button
+	} from 'sveltestrap';
+  
+	let isOpen = false;
+  	const toggle = () => (isOpen = !isOpen);
+  </script>
 
 <main>
-	<Container>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<div>
-		<Button color="danger">Meow</Button>
-	</div>
-	</Container>
+<Container>
+	<Navbar color="dark" dark scrolling fixed="top">
+		<NavbarBrand href="/" class="me-auto">> openmeds</NavbarBrand>
+		<NavItem>
+			<NavLink href="https://google.ca">Components</NavLink>
+		  </NavItem>
+		  <NavItem>
+			<NavLink href="https://github.com/bestguy/sveltestrap">GitHub</NavLink>
+		  </NavItem>
+		<NavbarToggler on:click={toggle} class="me-2" />
+		
+		<Collapse {isOpen} navbar>
+		  <Nav navbar>
+			<NavItem>
+			  <NavLink href="https://google.com">Data</NavLink>
+			</NavItem>
+			<NavItem>
+			  <NavLink href="https://github.com/bestguy/sveltestrap">GitHub</NavLink>
+			</NavItem>
+		  </Nav>
+		</Collapse>
+	  </Navbar>
+
+	  <Row>
+		  <Container>
+			  <h1>Meow</h1>
+		  </Container>
+	  </Row>
+</Container>
 </main>
 
 <Styles />
-
-<!-- <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style> -->
