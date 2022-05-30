@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {
 	  Collapse,
 	  Container,
@@ -17,7 +17,7 @@
 	  Col,
 	  Button
 	} from 'sveltestrap';
-  
+	import Supp from './Supp.svelte';
 	let isOpen = false;
   	const toggle = () => (isOpen = !isOpen);
   </script>
@@ -34,7 +34,7 @@
 		  </NavItem>
 		<NavbarToggler on:click={toggle} class="me-2" />
 		
-		<Collapse {isOpen} navbar>
+		<!-- <Collapse {isOpen} navbar>
 		  <Nav navbar>
 			<NavItem>
 			  <NavLink href="https://google.com">Data</NavLink>
@@ -43,15 +43,22 @@
 			  <NavLink href="https://github.com/bestguy/sveltestrap">GitHub</NavLink>
 			</NavItem>
 		  </Nav>
-		</Collapse>
+		</Collapse> -->
 	  </Navbar>
-
-	  <Row>
-		  <Container>
-			  <h1>Meow</h1>
-		  </Container>
-	  </Row>
 </Container>
+<!-- <Terminal 
+title="termy" 
+consoleCommand={consoleCommand}
+fontsize="0.85rem"
+fontfamily="Monaco"
+exactClose={()=>{}}
+/> -->
 </main>
+
+<div>meow</div>
+<div>miau</div>
+<div>meow</div>
+
+<Supp />
 
 <Styles />
