@@ -20,8 +20,6 @@
 	import Supp from './Supp.svelte';
 	let isOpen = false;
   	const toggle = () => (isOpen = !isOpen);
-
-	
   </script>
 
 <main>
@@ -32,7 +30,7 @@
 			<NavLink href="https://google.ca">Components</NavLink>
 		  </NavItem>
 		  <NavItem>
-			<NavLink href="https://github.com/bestguy/sveltestrap">GitHub</NavLink>
+			<NavLink href="https://github.com">GitHub</NavLink>
 		  </NavItem>
 		<NavbarToggler on:click={toggle} class="me-2" />
 	  </Navbar>
@@ -41,8 +39,6 @@
 </main>
 
 <div>meow</div>
-<div>miau</div>
-
 <div>meow</div>
 
 <Supp />

@@ -10,7 +10,7 @@ $: promise = fetchDrugs()
     <div>Waiting...</div>
 {:then results}
         {#each $drugs as drug}
-            <h3>{drug.name}</h3>
+            <h3>{drug}</h3>
         {/each}
     <div>{JSON.stringify(results, null, 2)}</div>
 {:catch error}
