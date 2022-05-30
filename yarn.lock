@@ -129,6 +129,11 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
+"@shopify/draggable@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@shopify/draggable/-/draggable-1.0.0-beta.8.tgz#2eb3c2f72298ce3e53fe16f34ab124cc495cd4fc"
+  integrity sha512-9IeBPQM93Ad4qFKUopwuTClzoST/1OId4MaSd/8FB5ScCL2tl25UaOGNR8E2hjiL7xK4LN5+I1Ews6amS7YAiA==
+
 "@tsconfig/svelte@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@tsconfig/svelte/-/svelte-2.0.1.tgz#0e8d7caa693e9b2afce5e622c0475bb0fd89c12c"
@@ -951,6 +956,12 @@ svelte-preprocess@^4.0.0:
     magic-string "^0.25.7"
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
+
+svelte-terminal@candywater/svelte-terminal#main:
+  version "1.1.0"
+  resolved "https://codeload.github.com/candywater/svelte-terminal/tar.gz/994462c487783c35c4bf0a2b583abd11795a57af"
+  dependencies:
+    "@shopify/draggable" "^1.0.0-beta.8"
 
 svelte@^3.0.0:
   version "3.48.0"
