@@ -259,7 +259,7 @@
 		<Navbar color="dark" dark fixed="top">
 			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
 			<NavItem>
-				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 DL Official Health Canada Data</NavLink>
+				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 Download Health Canada Data</NavLink>
 			  </NavItem>
 
 			<NavbarToggler on:click={toggle} class="me-2 pull-right" />
