@@ -165,7 +165,6 @@
 <style>
 	:global(body) {
 		background: white;
-
 		display: flex;
     align-items: center;
     justify-content: center;
@@ -252,7 +251,6 @@
 	}
 	.ioffset {
 		margin-top: -190px;
-		margin-bottom: 190px;
 	}
 </style>
 <main>
