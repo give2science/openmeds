@@ -250,7 +250,8 @@
 		font-weight: normal;
 	}
 	.ioffset {
-		margin-top: -190px;
+		margin-top: 100px;
+		margin-bottom: -120px;
 	}
 </style>
 <main>
@@ -277,7 +278,7 @@
 	<Row>
 		<Col>
 			<Row>
-				<iframe src="https://supp.ai/i/insulin-green-tea-extract/C0021641-C1704263" title="description" height="755em" width="100%" class="ioffset"></iframe>
+				<iframe src="https://www.webmd.com/interaction-checker/default.htm" title="description" height="755em" width="100%" class="ioffset"></iframe>
 			</Row>
 		</Col>
 		<Col>
