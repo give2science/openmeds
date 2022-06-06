@@ -174,15 +174,15 @@
 	.terminal {
 		position: relative;
 		font-family: monospace;
-		font-size: 1rem;
+		font-size: 0.9rem;
 		background: #333;
 		padding: 0.7rem 1rem;
-		margin: 5rem;
+		margin: 4rem;
 		border-radius: 0.5rem;
 		color: #b8b8b8;
 		box-shadow: 1px 1px #ccc;
 		min-height: 35rem;
-		min-width: 35em;
+		min-width: 30em;
 		overflow: hidden;
 	}
 	
@@ -261,7 +261,7 @@
 		<Navbar color="dark" dark fixed="top">
 			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
 			<NavItem>
-				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 Official Health Canada Data</NavLink>
+				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 DL Official Health Canada Data</NavLink>
 			  </NavItem>
 
 			<NavbarToggler on:click={toggle} class="me-2 pull-right" />
@@ -269,7 +269,7 @@
 			<Collapse {isOpen} navbar>
 			  <Nav navbar class="pull-right">
 				<NavItem class="pull-right">
-					<NavLink href="https://github.com/allenai/sdi-detection" class="pull-right">Drug Interactions AI scanning code</NavLink>
+					<NavLink href="https://github.com/allenai/sdi-detection" class="pull-right">🛠 Drug Interactions AI scanning code</NavLink>
 				</NavItem>
 				
 			  </Nav>
@@ -287,7 +287,7 @@
 				<Container fluid>
 				<section class="terminal">
 					<div class="bar">
-						<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
+						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="14" viewBox="0 0 50 14">
 							<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
 								<circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"/>
 								<circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"/>
