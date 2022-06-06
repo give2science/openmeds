@@ -250,11 +250,14 @@
 	p.output {
 		font-weight: normal;
 	}
+	.ioffset {
+		margin-top: -190px;
+	}
 </style>
 <main>
 <Container>
-	<Row class="opacity-90">
-		<Navbar color="dark" dark scrolling="true" fixed="top" class="pull-right">
+	<Row>
+		<Navbar color="dark" dark fixed="top">
 			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
 			<NavItem>
 				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html">Download Official Health Canada Data</NavLink>
@@ -274,9 +277,9 @@
 	</Row>
 	<Row cols={2}>
 		<Col>
-			<h1></h1>
-			<h1></h1>
-			<h1></h1>
+			<Row>
+				<iframe src="https://supp.ai/i/insulin-green-tea-extract/C0021641-C1704263" title="description" height="755em" class="ioffset"></iframe>
+			</Row>
 		</Col>
 		<Col>
 			<Row>
