@@ -261,7 +261,7 @@
 		<Navbar color="dark" dark fixed="top">
 			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
 			<NavItem>
-				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html">Download Official Health Canada Data</NavLink>
+				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 Official Health Canada Data</NavLink>
 			  </NavItem>
 
 			<NavbarToggler on:click={toggle} class="me-2 pull-right" />
@@ -269,7 +269,7 @@
 			<Collapse {isOpen} navbar>
 			  <Nav navbar class="pull-right">
 				<NavItem class="pull-right">
-					<NavLink href="https://github.com/allenai/sdi-detection" class="pull-right">Drug Interactions AI code for scanning papers</NavLink>
+					<NavLink href="https://github.com/allenai/sdi-detection" class="pull-right">Drug Interactions AI scanning code</NavLink>
 				</NavItem>
 				
 			  </Nav>
