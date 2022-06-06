@@ -160,60 +160,12 @@
 
 <svelte:window on:click={reset}/>
 
-<section class="terminal">
-	<div class="bar">
-		<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
-			<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-				<circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"/>
-				<circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"/>
-				<circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"/>
-			</g>
-		</svg>
-		
-	</div>
-	
-	{#each lines as line}
-	  <p>
-		  <span class="prompt">&gt;</span> {line.command}
-		</p>
-	
-		{#if line.output}
-			<p class="output">
-				{#each line.output.split("\n") as outputLine}
-					{outputLine}<br/>
-				{/each}
-			</p>  
-	  {/if}
-	{/each}
-	
-	{#if current && (current.action == 'command' || current.action == 'editor')}
-		<p>
-			<span class="prompt">&gt;</span> {current.typed}
-	  </p>
-	{/if}
-	
-	{#if current && current.action == 'editor' && current.showEditor}
-		<div class="editor">
-			{#each current.lines as line, lineIndex}
-			  {#if current.lineNumbers}<span class="line-number">{lineIndex+1}</span>{/if}
-			  {#each line.split() as char, charIndex}
-				  <span class:highlight={isSelected(lineIndex, charIndex)}>{char}</span>
-			  {/each}<br/>
-			{/each}<span class="cursor"></span>
-	  </div>
-	{/if}
-	
-	<div class="transcription-wrapper">
-		<div class="transcription" class:visible={!!transcription}>
-			{transcription}
-		</div>
-	</div>
-</section>
+
 
 <style>
 	:global(body) {
 		background: white;
-		height: 100%;
+
 		display: flex;
     align-items: center;
     justify-content: center;
@@ -222,14 +174,14 @@
 	.terminal {
 		position: relative;
 		font-family: monospace;
-		font-size: 1.1rem;
+		font-size: 1rem;
 		background: #333;
 		padding: 0.7rem 1rem;
 		margin: 5rem;
 		border-radius: 0.5rem;
 		color: #b8b8b8;
 		box-shadow: 1px 1px #ccc;
-		min-height: 55rem;
+		min-height: 35rem;
 		min-width: 35em;
 		overflow: hidden;
 	}
@@ -243,7 +195,7 @@
 		bottom: 0px;
 		width: 100%;
 		text-align: center;
-    margin: 1.8rem 0;
+    margin: 1.4rem 0;
 		
 	}
 	
@@ -272,7 +224,8 @@
 	.transcription {
 		display: inline-block;
 		font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 0.7rem;
+	opacity: 0.7;
     background: #ccc;
     padding: 0.5em;
     border-radius: 0.1em;
@@ -299,28 +252,86 @@
 	}
 </style>
 <main>
-<Container fluid>
-	<Row>
-		<Navbar color="dark" dark scrolling="true">
-		<NavbarBrand href="/" class="me-auto">> openmeds</NavbarBrand>
-		<NavItem>
-			<NavLink href="https://google.ca">Components</NavLink>
-		</NavItem>
-		<NavItem>
-			<NavLink href="https://github.com">GitHub</NavLink>
-		</NavItem>
-			<NavbarToggler on:click={toggle} class="me-2" />
-		</Navbar>
+<Container>
+	<Row class="opacity-90">
+		<Navbar color="dark" dark scrolling="true" fixed="top" class="pull-right">
+			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
+			<NavItem>
+				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html">Download Official Health Canada Data</NavLink>
+			  </NavItem>
+
+			<NavbarToggler on:click={toggle} class="me-2 pull-right" />
+	
+			<Collapse {isOpen} navbar>
+			  <Nav navbar class="pull-right">
+				<NavItem class="pull-right">
+					<NavLink href="https://github.com/allenai/sdi-detection" class="pull-right">Drug Interactions AI code for scanning papers</NavLink>
+				</NavItem>
+				
+			  </Nav>
+			</Collapse>
+		  </Navbar>
 	</Row>
 	<Row cols={2}>
 		<Col>
-			This is a column
+			<h1></h1>
+			<h1></h1>
+			<h1></h1>
 		</Col>
 		<Col>
-			This is column2
-		</Col>
-		<Col>
-			This is column3
+			<Row>
+				<Container fluid>
+				<section class="terminal">
+					<div class="bar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
+							<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+								<circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"/>
+								<circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"/>
+								<circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"/>
+							</g>
+						</svg>
+						
+					</div>
+					
+					{#each lines as line}
+					  <p>
+						  <span class="prompt">&gt;</span> {line.command}
+						</p>
+					
+						{#if line.output}
+							<p class="output">
+								{#each line.output.split("\n") as outputLine}
+									{outputLine}<br/>
+								{/each}
+							</p>  
+					  {/if}
+					{/each}
+					
+					{#if current && (current.action == 'command' || current.action == 'editor')}
+						<p>
+							<span class="prompt">&gt;</span> {current.typed}
+					  </p>
+					{/if}
+					
+					{#if current && current.action == 'editor' && current.showEditor}
+						<div class="editor">
+							{#each current.lines as line, lineIndex}
+							  {#if current.lineNumbers}<span class="line-number">{lineIndex+1}</span>{/if}
+							  {#each line.split() as char, charIndex}
+								  <span class:highlight={isSelected(lineIndex, charIndex)}>{char}</span>
+							  {/each}<br/>
+							{/each}<span class="cursor"></span>
+					  </div>
+					{/if}
+					
+					<div class="transcription-wrapper">
+						<div class="transcription" class:visible={!!transcription}>
+							{transcription}
+						</div>
+					</div>
+				</section>
+			</Container>
+			</Row>
 		</Col>
 	</Row>
 </Container> 
