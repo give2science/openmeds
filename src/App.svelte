@@ -173,7 +173,7 @@
 	.terminal {
 		position: relative;
 		font-family: monospace;
-		font-size: 0.9rem;
+		font-size: 1rem;
 		background: #333;
 		padding: 0.7rem 1rem;
 		margin: 4rem;
@@ -181,7 +181,7 @@
 		color: #b8b8b8;
 		box-shadow: 1px 1px #ccc;
 		min-height: 35rem;
-		min-width: 30em;
+		min-width: 34em;
 		overflow: hidden;
 	}
 	
@@ -275,10 +275,10 @@
 			</Collapse>
 		  </Navbar>
 	</Row>
-	<Row>
+	<Row cols={2}>
 		<Col>
 			<Row>
-				<iframe src="https://www.webmd.com/interaction-checker/default.htm" title="description" height="755em" width="100%" class="ioffset"></iframe>
+				
 			</Row>
 		</Col>
 		<Col>
