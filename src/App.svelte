@@ -252,6 +252,7 @@
 	}
 	.ioffset {
 		margin-top: -190px;
+		margin-bottom: 190px;
 	}
 </style>
 <main>
@@ -275,10 +276,10 @@
 			</Collapse>
 		  </Navbar>
 	</Row>
-	<Row cols={2}>
+	<Row>
 		<Col>
 			<Row>
-				<iframe src="https://supp.ai/i/insulin-green-tea-extract/C0021641-C1704263" title="description" height="755em" class="ioffset"></iframe>
+				<iframe src="https://supp.ai/i/insulin-green-tea-extract/C0021641-C1704263" title="description" height="755em" width="100%" class="ioffset"></iframe>
 			</Row>
 		</Col>
 		<Col>
