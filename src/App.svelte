@@ -27,8 +27,12 @@
 	let lines = []
 	let selections = []
 	let transcription
+	let drugQuery 
 	
-	let nextTimer, typeTimer, transitionTimer, editorCommandTimer
+	let nextTimer: any 
+	let typeTimer 
+	let transitionTimer 
+	let editorCommandTimer
 	
 	onMount(() => {
 		nextTimer = next()
@@ -275,12 +279,12 @@
 			</Collapse>
 		  </Navbar>
 	</Row>
-	<Row cols={2}>
-		<Col>
+	<Row>
+		
 			<Row>
 				
 			</Row>
-		</Col>
+		
 		<Col>
 			<Row>
 				<Container fluid>

@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "openmeds",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -28,11 +28,13 @@
     "@rollup/plugin-json": "^4.1.0",
     "convert-csv-to-json": "^1.3.3",
     "csvjson": "^5.1.0",
+    "htop": "^1.0.1",
     "simple-svelte-autocomplete": "^2.4.0",
     "sirv-cli": "^2.0.0",
     "svelte-csv": "^1.2.8",
     "svelte-terminal": "candywater/svelte-terminal#main",
     "sveltestrap": "^5.9.0",
+    "vtop": "^0.6.1",
     "wscat": "^5.1.0"
   }
 }
