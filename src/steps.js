@@ -100,12 +100,12 @@ export default [
 	// },
 	{
 		action: 'command',
-		command: "curl 'https://api.openmeds.ca?q=milk'",
+		command: "curl 'https://api.openmeds.ca/?q=milk'",
 		transcription: "copy the query, the api includes supplements and food :)"
 	},
     {
 		action: 'command',
-		command: "curl 'https://api.openmeds.ca?q=aspirin'",
+		command: "curl 'https://api.openmeds.ca/?q=aspirin'",
 		output: queryOutput,
         transcription: "change the name of the drug to lookup and hit enter"
 	},

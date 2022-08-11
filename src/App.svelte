@@ -99,7 +99,7 @@
 		transcription = currentEditorCommand.transcription 
 		
 		if (currentEditorCommand.action == 'close') {
-			// editorCommandTimer = setTimeout(closeEditor, currentEditorCommand.delay)
+			// editorCommandTimer = setTimeout(closeEditor, currentEditorCommandp[;'p;'].delay)
 		} else if (currentEditorCommand.action == 'select') {
 			const { from, to, style } = currentEditorCommand
 			const selection = { from, to, style }
@@ -280,11 +280,9 @@
 		  </Navbar>
 	</Row>
 	<Row>
-		
-			<Row>
-				
-			</Row>
-		
+
+	</Row> 
+	<Row>
 		<Col>
 			<Row>
 				<Container fluid>
