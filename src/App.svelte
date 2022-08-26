@@ -30,7 +30,7 @@
 	let drugQuery 
 	
 	let nextTimer: any 
-	let typeTimer ``
+	let typeTimer
 	let transitionTimer 
 	let editorCommandTimer
 	
