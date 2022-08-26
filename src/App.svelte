@@ -253,10 +253,6 @@
 	p.output {
 		font-weight: normal;
 	}
-	.ioffset {
-		margin-top: 100px;
-		margin-bottom: -120px;
-	}
 </style>
 <main>
 <Container>
