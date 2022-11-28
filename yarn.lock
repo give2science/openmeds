@@ -229,6 +229,14 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+assemblyscript@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.24.1.tgz#87a32da2cd2962ffdb4d44e159751b52d3594421"
+  integrity sha512-uqR7NW0z/QFuqOkszoCb2F2jJI0VsmmmATRYG2JGzspC9nkct/8+6Pad7amCnIRriAC/T9AknEs+Qv/U/+fNpQ==
+  dependencies:
+    binaryen "110.0.0-nightly.20221105"
+    long "^5.2.0"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -238,6 +246,11 @@ binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
+
+binaryen@110.0.0-nightly.20221105:
+  version "110.0.0-nightly.20221105"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-110.0.0-nightly.20221105.tgz#9e3c47e8ffa31521acd125013dca3ceea143d0bf"
+  integrity sha512-OBESOc51q3SwgG8Uv8nMzGnSq7LJpSB/Fu8B3AjlZg6YtCEwRnlDWlnwNB6mdql+VdexfKmNcsrs4K7MYidmdQ==
 
 blessed@0.1.81:
   version "0.1.81"
@@ -376,6 +389,11 @@ detect-indent@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.1.0.tgz#592485ebbbf6b3b1ab2be175c8393d04ca0d57e6"
   integrity sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==
+
+dexie@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/dexie/-/dexie-3.2.2.tgz#fa6f2a3c0d6ed0766f8d97a03720056f88fe0e01"
+  integrity sha512-q5dC3HPmir2DERlX+toCBbHQXW5MsyrFqPFcovkH9N2S/UW/H3H5AWAB6iEOExeraAu+j+zRDG+zg/D7YhH0qg==
 
 drawille@1.1.0:
   version "1.1.0"
@@ -641,6 +659,11 @@ local-access@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/local-access/-/local-access-1.1.0.tgz#e007c76ba2ca83d5877ba1a125fc8dfe23ba4798"
   integrity sha512-XfegD5pyTAfb+GY6chk283Ox5z8WexG56OvM06RWLpAc/UHozO8X6xAxEkIitZOtsSMM1Yr3DkHgW5W+onLhCw==
+
+long@^5.2.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/long/-/long-5.2.1.tgz#e27595d0083d103d2fa2c20c7699f8e0c92b897f"
+  integrity sha512-GKSNGeNAtw8IryjjkhZxuKB3JzlcLTwjtiQCHKvqQet81I93kXslhDQruGI/QsddO83mcDToBVy7GqGS/zYf/A==
 
 magic-string@^0.25.7:
   version "0.25.9"

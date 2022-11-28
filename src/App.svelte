@@ -5,6 +5,7 @@
 	  DropdownItem,Styles,Row,Col,Button, Form,
 	  Input
 	} from 'sveltestrap';
+	import Dexie, {DBCoreRangeType, Table} from 'dexie';
 	import Supp from './Supp.svelte';
 	let isOpen = false;
 	let allDrugs;
@@ -150,9 +151,37 @@
 			
 		nextTimer = setTimeout(next, 1000)
 	}
-	
-</script>
 
+//IndexedDB storage wrapper
+//Typescript interface 
+interface Drugs {
+	id?: number;
+	name?: string;
+	dosage?: number;
+}
+
+class DrugsDatabase extends Dexie {
+	public drugs!: Table<Drugs, number>;
+	public constructor() {
+		super("DrugDatabase");
+		this.version(1).stores({
+			drugs: "++id,name,dosage"
+		})
+	}
+}
+
+const db = new DrugsDatabase();
+
+db.transaction('rw', db.drugs, async() => {
+	if ((await db.drugs.where({name: 'Vyvanse'}).count())=== 0){
+		const id = await db.drugs.add({name: "Vyvanse", dosage: 69})
+		alert (`Added drug generic id ${id}`)
+	}
+const lowDosages = await db.drugs.where("dosage").below(48).toArray()
+alert ("My low dosages: " + JSON.stringify(lowDosages))
+
+})
+</script>
 <!--
 <pre>
   lines = {JSON.stringify(lines, null, 2)}
@@ -161,11 +190,7 @@
 	current = {JSON.stringify(current, null, 2)}
 </pre>
 -->
-
 <svelte:window on:click={reset}/>
-
-
-
 <style>
 	:global(body) {
 		background: white;
