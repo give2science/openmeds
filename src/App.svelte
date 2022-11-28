@@ -5,7 +5,7 @@
 	  DropdownItem,Styles,Row,Col,Button, Form,
 	  Input
 	} from 'sveltestrap';
-	import Dexie, {DBCoreRangeType, Table} from 'dexie';
+	import Dexie from 'dexie';
 	import Supp from './Supp.svelte';
 	let isOpen = false;
 	let allDrugs;
