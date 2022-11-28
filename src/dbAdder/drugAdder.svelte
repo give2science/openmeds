@@ -57,7 +57,7 @@
   <br />
   <button on:click={addFriend}>Add Friend</button>
   </fieldset>
-  <div style="height:20px;">{status || ""}</div>
+  <div style="height:20px;">{status||""}</div>
   <!-- <button on:click={generateRandomFriends}>Generate 1000 friends</button>
    Hide this button. Seem to have become CORS restricted...
   -->

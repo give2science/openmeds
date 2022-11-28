@@ -96,6 +96,7 @@
   {#if $friends}
     <ul>
       {#each $friends as friend (friend.id)}
+      
         <li>{friend.name}, {friend.age}</li>
       {/each}
     </ul>

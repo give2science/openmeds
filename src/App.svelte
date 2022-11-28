@@ -6,6 +6,7 @@
 	  Input
 	} from 'sveltestrap';
 	import Dexie from 'dexie';
+	import type { Table } from 'dexie';
 	import Supp from './Supp.svelte';
 	let isOpen = false;
 	let allDrugs;
@@ -284,9 +285,11 @@ alert ("My low dosages: " + JSON.stringify(lowDosages))
 	<Row >
 		<Navbar color="dark" dark fixed="top" class="opacity-75">
 			<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
+			<ol>
 			<NavItem>
 				<NavLink href="https://www.canada.ca/en/health-canada/services/drugs-health-products/medeffect-canada/adverse-reaction-database/canada-vigilance-online-database-data-extract.html"> 💾 DL Health Canada Data</NavLink>
-			  </NavItem>
+			</NavItem>
+			</ol>
 
 			<NavbarToggler on:click={toggle} class="me-2 pull-right" />
 	

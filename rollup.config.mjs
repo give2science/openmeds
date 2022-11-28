@@ -6,6 +6,7 @@ import terser from '@rollup/plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import { globals } from 'svelte/internal';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -34,9 +35,12 @@ export default {
 	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
-		format: 'cjs',
+		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
+		globals: {
+            "App.svelte": 'App.svelte'
+		}
 	},
 	plugins: [
 		svelte({
@@ -63,7 +67,7 @@ export default {
 		commonjs(),
 		typescript({
 			sourceMap: true,
-			inlineSources: !production
+			inlineSources: true
 		}),
 
 		// In dev mode, call `npm run start` once
@@ -76,7 +80,7 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser
+		production && terser()
 	],
 	watch: {
 		clearScreen: false
