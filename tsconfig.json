@@ -3,7 +3,7 @@
   "include": ["src/**/*"],
   "exclude": ["__sapper__/*"],
   "compilerOptions": {
-    "sourceMap": true,
+    "sourceMap": false,
     "types": ["svelte"],
   }
 }
