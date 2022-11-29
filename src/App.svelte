@@ -19,12 +19,9 @@
 		Form,
 		Input,
 	} from "sveltestrap";
-	// import Dexie from "dexie";
-	// import type { Table } from "dexie";
+	import Dexie from "dexie";
+	import type { Table } from "dexie";
 	let isOpen = false;
-	let allDrugs;
-	let drugOne = "FirstMed";
-	let drugTwo = "SecondMed";
 	const toggle = () => (isOpen = !isOpen);
 	// const bringDrugs = async () => {
 	// 	const response = await fetch(`https://api.openmeds.ca/?q=${drugOne}`);
@@ -62,7 +59,7 @@
 			typeTimer = setTimeout(type, 0);
 		} else if (current.action == "wait") {
 			index += 1;
-			nextTimer = setTimeout(next, current.delay || 1000);
+			nextTimer = setTimeout(next, current.delay || 0);
 		}
 	}
 
@@ -75,10 +72,10 @@
 		current.index += 1;
 
 		if (current.index < current.command.length) {
-			typeTimer = setTimeout(type, 50);
+			typeTimer = setTimeout(type, 5);
 		} else {
 			if (current.action == "editor") {
-				transitionTimer = setTimeout(openEditor, 1000);
+				transitionTimer = setTimeout(openEditor, 0);
 			} else {
 				scheduleTransition();
 			}
@@ -86,7 +83,7 @@
 	}
 
 	function scheduleTransition() {
-		const delay = transcription ? 100 : 50;
+		const delay = transcription ? 0: 5;
 		transitionTimer = setTimeout(transition, delay);
 	}
 
@@ -97,7 +94,7 @@
 		current.showEditor = true;
 		current.selections = [];
 
-		editorCommandTimer = setTimeout(nextEditorCommand, 500);
+		editorCommandTimer = setTimeout(nextEditorCommand, 0);
 	}
 
 	function transition() {
@@ -106,7 +103,7 @@
 		current = null;
 		transcription = "";
 
-		nextTimer = setTimeout(next, 60);
+		nextTimer = setTimeout(next, 0);
 	}
 
 	function nextEditorCommand() {
@@ -172,36 +169,36 @@
 		currentEditorIndex = 0;
 		currentEditorCommand = null;
 
-		nextTimer = setTimeout(next, 1000);
+		nextTimer = setTimeout(next, 80);
 	}
 
-	// //IndexedDB storage wrapper
-	// //Typescript interface
-	// interface Drugs {
-	// 	id?: number;
-	// 	name?: string;
-	// 	dosage?: number;
-	// }
+	//IndexedDB storage wrapper
+	//Typescript interface
+	interface Drugs {
+		id?: number;
+		name?: string;
+		dosage?: number;
+	}
 
-	// class DrugsDatabase extends Dexie {
-	// 	public drugs!: Table<Drugs, number>;
-	// 	public constructor() {
-	// 		super("DrugDatabase");
-	// 		this.version(1).stores({
-	// 			drugs: "++id,name,dosage",
-	// 		});
-	// 	}
-	// }
+	class DrugsDatabase extends Dexie {
+		public drugs!: Table<Drugs, number>;
+		public constructor() {
+			super("DrugDatabase");
+			this.version(1).stores({
+				drugs: "++id,name,dosage",
+			});
+		}
+	}
 
-	// const db = new DrugsDatabase();
+	const db = new DrugsDatabase();
 
-	// db.transaction("rw", db.drugs, async () => {
-	// 	if ((await db.drugs.where({ name: "Vyvanse" }).count()) === 0) {
-	// 		const id = await db.drugs.add({ name: "Vyvanse", dosage: 69 });
+	db.transaction("rw", db.drugs, async () => {
+		if ((await db.drugs.where({ name: "Vyvanse" }).count()) === 0) {
+			const id = await db.drugs.add({ name: "Vyvanse", dosage: 69 });
 
-	// 	}
-	// 	const lowDosages = await db.drugs.where("dosage").below(48).toArray();
-	// });
+		}
+		const lowDosages = await db.drugs.where("dosage").below(48).toArray();
+	});
 </script>
 
 <!--
@@ -247,98 +244,8 @@
 		<Row>
 			<Col>
 				<Row>
-					<Container fluid>
-						<section class="terminal">
-							<div class="bar">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="50"
-									height="14"
-									viewBox="0 0 50 14"
-								>
-									<g
-										fill="none"
-										fill-rule="evenodd"
-										transform="translate(1 1)"
-									>
-										<circle
-											cx="6"
-											cy="6"
-											r="6"
-											fill="#FF5F56"
-											stroke="#E0443E"
-											stroke-width=".5"
-										/>
-										<circle
-											cx="26"
-											cy="6"
-											r="6"
-											fill="#FFBD2E"
-											stroke="#DEA123"
-											stroke-width=".5"
-										/>
-										<circle
-											cx="46"
-											cy="6"
-											r="6"
-											fill="#27C93F"
-											stroke="#1AAB29"
-											stroke-width=".5"
-										/>
-									</g>
-								</svg>
-							</div>
-
-							{#each lines as line}
-								<p>
-									<span class="prompt">&gt;</span>
-									{line.command}
-								</p>
-
-								{#if line.output}
-									<p class="output">
-										{#each line.output.split("\n") as outputLine}
-											{outputLine}<br />
-										{/each}
-									</p>
-								{/if}
-							{/each}
-
-							{#if current && (current.action == "command" || current.action == "editor")}
-								<p>
-									<span class="prompt">&gt;</span>
-									{current.typed}
-								</p>
-							{/if}
-
-							{#if current && current.action == "editor" && current.showEditor}
-								<div class="editor">
-									{#each current.lines as line, lineIndex}
-										{#if current.lineNumbers}<span
-												class="line-number"
-												>{lineIndex + 1}</span
-											>{/if}
-										{#each line.split() as char, charIndex}
-											<span
-												class:highlight={isSelected(
-													lineIndex,
-													charIndex
-												)}>{char}</span
-											>
-										{/each}<br />
-									{/each}<span class="cursor" />
-								</div>
-							{/if}
-
-							<div class="transcription-wrapper">
-								<div
-									class="transcription"
-									class:visible={!!transcription}
-								>
-									{transcription}
-								</div>
-							</div>
-						</section>
+					<Container>
+						
 					</Container>
 				</Row>
 			</Col>
@@ -357,7 +264,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-
+/* 
 	.terminal {
 		position: relative;
 		font-family: monospace;
@@ -435,5 +342,5 @@
 	}
 	p.output {
 		font-weight: normal;
-	}
+	} */
 </style>
