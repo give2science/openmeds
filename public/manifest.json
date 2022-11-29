@@ -3,8 +3,8 @@
     "name": "openmeds",
     "icons": [
     {
-      "src":"/favicon.ico",
-      "type": "image/ico"
+      "src":"/2favicon.png",
+      "type": "image/png"
     },
     {
       "src":"/favicon128.png",
@@ -33,5 +33,5 @@
    "Theme_color": "#000000",
    "theme_color": "#000000",
    "background_color": "#000000", 
-   "display": "fullscreen"
+   "display": "minimal-ui"
 }

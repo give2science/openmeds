@@ -19,20 +19,19 @@
 		Form,
 		Input,
 	} from "sveltestrap";
-	import Dexie from "dexie";
-	import type { Table } from "dexie";
-	import Supp from "./Supp.svelte";
+	// import Dexie from "dexie";
+	// import type { Table } from "dexie";
 	let isOpen = false;
 	let allDrugs;
 	let drugOne = "FirstMed";
 	let drugTwo = "SecondMed";
 	const toggle = () => (isOpen = !isOpen);
-	const bringDrugs = async () => {
-		const response = await fetch(`https://api.openmeds.ca/?q=${drugOne}`);
-		const data = await response.json();
-		allDrugs.set(Object.values(data.results[0]));
-		console.log(allDrugs);
-	};
+	// const bringDrugs = async () => {
+	// 	const response = await fetch(`https://api.openmeds.ca/?q=${drugOne}`);
+	// 	const data = await response.json();
+	// 	allDrugs.set(Object.values(data.results[0]));
+	// 	console.log(allDrugs);
+	// };
 	import { onMount } from "svelte";
 	import steps from "./steps.js";
 
@@ -87,7 +86,7 @@
 	}
 
 	function scheduleTransition() {
-		const delay = transcription ? 1500 : 300;
+		const delay = transcription ? 100 : 50;
 		transitionTimer = setTimeout(transition, delay);
 	}
 
@@ -98,7 +97,7 @@
 		current.showEditor = true;
 		current.selections = [];
 
-		editorCommandTimer = setTimeout(nextEditorCommand, 1000);
+		editorCommandTimer = setTimeout(nextEditorCommand, 500);
 	}
 
 	function transition() {
@@ -107,7 +106,7 @@
 		current = null;
 		transcription = "";
 
-		nextTimer = setTimeout(next, 200);
+		nextTimer = setTimeout(next, 60);
 	}
 
 	function nextEditorCommand() {
@@ -176,34 +175,33 @@
 		nextTimer = setTimeout(next, 1000);
 	}
 
-	//IndexedDB storage wrapper
-	//Typescript interface
-	interface Drugs {
-		id?: number;
-		name?: string;
-		dosage?: number;
-	}
+	// //IndexedDB storage wrapper
+	// //Typescript interface
+	// interface Drugs {
+	// 	id?: number;
+	// 	name?: string;
+	// 	dosage?: number;
+	// }
 
-	class DrugsDatabase extends Dexie {
-		public drugs!: Table<Drugs, number>;
-		public constructor() {
-			super("DrugDatabase");
-			this.version(1).stores({
-				drugs: "++id,name,dosage",
-			});
-		}
-	}
+	// class DrugsDatabase extends Dexie {
+	// 	public drugs!: Table<Drugs, number>;
+	// 	public constructor() {
+	// 		super("DrugDatabase");
+	// 		this.version(1).stores({
+	// 			drugs: "++id,name,dosage",
+	// 		});
+	// 	}
+	// }
 
-	const db = new DrugsDatabase();
+	// const db = new DrugsDatabase();
 
-	db.transaction("rw", db.drugs, async () => {
-		if ((await db.drugs.where({ name: "Vyvanse" }).count()) === 0) {
-			const id = await db.drugs.add({ name: "Vyvanse", dosage: 69 });
-			alert(`Added drug generic id ${id}`);
-		}
-		const lowDosages = await db.drugs.where("dosage").below(48).toArray();
-		alert("My low dosages: " + JSON.stringify(lowDosages));
-	});
+	// db.transaction("rw", db.drugs, async () => {
+	// 	if ((await db.drugs.where({ name: "Vyvanse" }).count()) === 0) {
+	// 		const id = await db.drugs.add({ name: "Vyvanse", dosage: 69 });
+
+	// 	}
+	// 	const lowDosages = await db.drugs.where("dosage").below(48).toArray();
+	// });
 </script>
 
 <!--
@@ -230,11 +228,11 @@
 					</NavItem>
 				</ol>
 
-				<NavbarToggler on:click={toggle} class="me-2 pull-right" id="options" aria-label="options click" />
+				<NavbarToggler on:click={toggle} class="me-2" id="options" aria-label="options click" />
 
 				<Collapse {isOpen} navbar>
-					<Nav navbar class="pull-right">
-						<NavItem class="pull-right">
+					<Nav navbar>
+						<NavItem>
 							<NavLink
 								href="https://github.com/allenai/sdi-detection"
 								class="pull-right"
@@ -420,7 +418,7 @@
 		color: #222;
 		top: 5rem;
 		position: relative;
-		transition: all 0.3s ease-out;
+		transition: all 0.2s ease-out;
 	}
 
 	.transcription.visible {

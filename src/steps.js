@@ -15,7 +15,7 @@ const output = {
                 "ASA",
                 "...",
             ],
-            "definition": "The prototypical analgesic used in the treatment of mild to moderate pain. It has anti-inflammator...",
+            "definition": "The prototypical analgesic...",
             "ent_type": "drug",
             "slug": "aspirin",
             "interacts_with_count": 173,
