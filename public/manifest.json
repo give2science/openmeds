@@ -1,0 +1,37 @@
+{
+    "short_name": "openmeds",
+    "name": "openmeds",
+    "icons": [
+    {
+      "src":"/favicon.png",
+      "type": "image/png"
+    },
+    {
+      "src":"/favicon128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src":"/favicon144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src":"/favicon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src":"/maskable_favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+   ],
+   "description": "free drug info",
+   "start_url": "openmeds.ca",
+   "Theme_color": "#000000",
+   "theme_color": "#000000",
+   "background_color": "#000000", 
+   "display": "minimal-ui"
+}

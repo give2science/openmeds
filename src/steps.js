@@ -11,15 +11,11 @@ const output = {
                 "Acetylsalicylic Acid",
                 "Aspirin product",
                 "acetylsalicyclic acid",
-                "aspirins",
-                "2-(Acetyloxy)benzoic Acid",
-                "Benzoic acid, 2-(acetyloxy)-",
-                "antiplatelet aspirin",
                 "aspirin antiplatelet",
                 "ASA",
                 "...",
             ],
-            "definition": "The prototypical analgesic used in the treatment of mild to moderate pain. It has anti-inflammator...",
+            "definition": "The prototypical analgesic...",
             "ent_type": "drug",
             "slug": "aspirin",
             "interacts_with_count": 173,
@@ -104,12 +100,12 @@ export default [
 	// },
 	{
 		action: 'command',
-		command: "curl 'https://api.openmeds.ca?q=aspirin'",
-		transcription: "copy the query for aspirin"
+		command: "curl 'https://api.openmeds.ca/?q=milk'",
+		transcription: "copy the query, the api includes supplements and food :)"
 	},
     {
 		action: 'command',
-		command: "curl 'https://api.openmeds.ca?q=milk'",
+		command: "curl 'https://api.openmeds.ca/?q=aspirin'",
 		output: queryOutput,
         transcription: "change the name of the drug to lookup and hit enter"
 	},
