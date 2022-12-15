@@ -31,7 +31,22 @@
 	// };
 	import { onMount } from "svelte";
 	import steps from "./steps.js";
+	//import { writable } from "svelte/store";
+	import { Chart, ChartOptions, LineSeries } from "svelte-lightweight-charts";
 
+	const data = [
+        { time: '2019-04-11', value: 80.01 },
+        { time: '2019-04-12', value: 96.63 },
+        { time: '2019-04-13', value: 76.64 },
+        { time: '2019-04-14', value: 81.89 },
+        { time: '2019-04-15', value: 74.43 },
+        { time: '2019-04-16', value: 80.01 },
+        { time: '2019-04-17', value: 96.63 },
+        { time: '2019-04-18', value: 76.64 },
+        { time: '2019-04-19', value: 81.89 },
+        { time: '2019-04-20', value: 74.43 },
+    ];
+	
 	let index = 0;
 	let current;
 	let currentEditorIndex = 0;
@@ -199,6 +214,23 @@
 		}
 		const lowDosages = await db.drugs.where("dosage").below(48).toArray();
 	});
+
+  const chartOptions = {
+    width: 800,
+    height: 400,
+  };
+
+//   let data = [];
+
+//   async function loadData() {
+//     data = await csv('path/to/data.csv');
+//   }
+
+  //loadData();
+
+
+
+
 </script>
 
 <!--
@@ -211,8 +243,8 @@
 -->
 <svelte:window on:click={reset} />
 <main>
-	<Container>
-		<Row>
+	<Container fluid>
+		<Row class="mb-1">
 			<Navbar color="dark" dark fixed="top">
 				<NavbarBrand href="/" class="me-auto">💊 openmeds</NavbarBrand>
 				<ol>
@@ -240,16 +272,23 @@
 				</Collapse>
 			</Navbar>
 		</Row>
-		<Row />
-		<Row>
-			<Col>
-				<Row>
-					<Container>
-						
-					</Container>
-				</Row>
-			</Col>
-		</Row>
+	<Row>1</Row>
+	<Row>2</Row>
+	<Row>1</Row>
+	<Row>2</Row>
+
+	<Row class='row-fluid'>
+		<Col>meow</Col>
+    	<Col>.col-sm-auto .offset-sm-1</Col>
+	</Row>
+	<!-- <py-script>
+		from datetime import datetime
+		now = datetime.now()
+		display(now.strftime("%m/%d/%Y, %H:%M:%S"))
+	</py-script> -->
+	<Chart width={800} height={600}>
+		<LineSeries data={data}/>
+	</Chart>
 	</Container>
 </main>
 
@@ -264,83 +303,4 @@
 		align-items: center;
 		justify-content: center;
 	}
-/* 
-	.terminal {
-		position: relative;
-		font-family: monospace;
-		font-size: 1rem;
-		background: #333;
-		padding: 0.7rem 1rem;
-		margin: 4rem;
-		border-radius: 0.5rem;
-		color: #ffffff;
-		box-shadow: 1px 1px #ffffff;
-		min-height: 35rem;
-		min-width: 34em;
-		overflow: hidden;
-	}
-
-	.terminal .bar {
-		margin-bottom: 1rem;
-	}
-
-	.transcription-wrapper {
-		position: absolute;
-		bottom: 0px;
-		width: 100%;
-		text-align: center;
-		margin: 1.4rem 0;
-	}
-
-	.editor {
-		position: absolute;
-		top: 3.5rem;
-		background: #333;
-		width: -webkit-fill-available;
-		height: -webkit-fill-available;
-		margin-left: -1rem;
-		padding: 0 1rem;
-	}
-
-	.editor .line-number {
-		color: #ffbd2e;
-		font-weight: bold;
-		display: inline-block;
-		margin-right: 0.5rem;
-	}
-
-	.editor .highlight {
-		background: white;
-		color: black;
-	}
-
-	.transcription {
-		display: inline-block;
-		font-family: sans-serif;
-		font-size: 0.7rem;
-		opacity: 0.9;
-		background: #ffffff;
-		padding: 0.5em;
-		border-radius: 0.1em;
-		color: #222;
-		top: 5rem;
-		position: relative;
-		transition: all 0.2s ease-out;
-	}
-
-	.transcription.visible {
-		top: 0px;
-	}
-
-	.prompt {
-		color: #27c93f;
-		font-weight: bold;
-	}
-
-	p {
-		margin: 0.2rem 0;
-	}
-	p.output {
-		font-weight: normal;
-	} */
 </style>
