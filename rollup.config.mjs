@@ -2,12 +2,12 @@ import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
-import terser from '@rollup/plugin-terser';
+import { terser } from '@wwa/rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import { uglify } from 'rollup-plugin-uglify';
-
+import gzipPlugin from 'rollup-plugin-gzip'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -45,12 +45,13 @@ export default {
 	},
 	plugins: [
 		svelte({
-			preprocess: sveltePreprocess({ sourceMap: !production }),
+			preprocess: sveltePreprocess({ sourceMap: false }),
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
 			}
 		}),
+		uglify(),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
@@ -90,10 +91,25 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		terser(),
-		uglify()
+		terser({
+			output: {
+			  comments: false,
+			},
+			compress: {
+			  pure_getters: true,
+			  unsafe: true,
+			  unsafe_comps: true,
+			  warnings: false,
+			  sequences: true,
+			  dead_code: true,
+			  drop_debugger: true,
+			  conditionals: true,
+			  evaluate: true,
+			  unused: true,
+			  reduce_funcs: true,
+			  reduce_vars: true,
+			}
+		}),
+		gzipPlugin()
 	],
-	watch: {
-		clearScreen: false
-	}
 };

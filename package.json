@@ -13,6 +13,7 @@
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^10.0.0",
     "@tsconfig/svelte": "^3.0.0",
+    "@wwa/rollup-plugin-terser": "^1.0.1",
     "carbon-preprocess-svelte": "^0.9.1",
     "rollup": "^3.3.4",
     "rollup-plugin-css-only": "^4.1.0",
@@ -31,12 +32,14 @@
   "overrides": {
     "rollup-plugin-uglify": {
       "serialize-javascript": "^3.1.0"
+    },
+    "@wwa/rollup-plugin-terser": {
+      "serialize-javascript": "^3.1.0"
     }
   },
   "dependencies": {
     "@rollup/plugin-json": "^6",
     "@rollup/plugin-replace": "^5",
-    "@rollup/plugin-terser": "^0.2",
     "bootstrap": "^5.2.3",
     "dexie": "^3.2.2",
     "lightweight-charts": "^3.8.0",
