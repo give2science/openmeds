@@ -6,7 +6,7 @@ import terser from '@rollup/plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
-import { globals } from 'svelte/internal';
+import { uglify } from 'rollup-plugin-uglify';
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -35,9 +35,9 @@ function serve() {
 export default {
 	input: 'src/main.ts',
 	output: {
-		sourcemap: true,
+		sourcemap: false,
 		format: 'iife',
-		name: 'app',
+		name: 'openmeds',
 		file: 'public/build/bundle.js',
 		globals: {
             "App.svelte": 'App.svelte'
@@ -54,7 +54,16 @@ export default {
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
-		terser(),
+		// terser({
+		// 	compress: {
+		// 		unused: true,
+		// 		collapse_vars:true
+		// 	},
+		// 	output: {
+		// 		comments: false
+		// 	},
+		// 	sourceMap: true
+		// }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
@@ -67,9 +76,9 @@ export default {
 		}),
 		commonjs(),
 		typescript({
-			sourceMap: true,
-			inlineSources: true
+			inlineSources: false
 		}),
+		
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
@@ -81,7 +90,8 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		terser(),
+		uglify()
 	],
 	watch: {
 		clearScreen: false

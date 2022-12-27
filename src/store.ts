@@ -11,9 +11,9 @@ export const apiData: Writable<any> = writable([]);
 //   const data = await response.json();
 //   drugs.set(Object.values(data.results[0]));
 // }
-export const drugValues = derived(apiData, ($apiData) => {
-    if ($apiData.drugs){
-      return $apiData.drinks.map(drink => drink.strDrink);
-    }
-    return [];
-  });
+// export const drugValues = derived(apiData, ($apiData) => {
+//     if ($apiData.drugs){
+//       return $apiData.drinks.map(drink => drink.strDrink);
+//     }
+//     return [];
+//   });
